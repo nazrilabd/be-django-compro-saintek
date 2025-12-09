@@ -6,7 +6,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('library.urls')),
+    path('api/posts/', include('post.urls')),
+    path('api/study-programs/', include('sprogram.urls')),
+    path('api/forums/', include('forum.urls')),
     path('accounts/', include('django.contrib.auth.urls')), # Rute Login/Logout
 ]
 if settings.DEBUG:

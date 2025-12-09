@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'library.apps.LibraryConfig',
+    'post.apps.PostConfig',
+    'sprogram.apps.SprogramConfig',
+    'forum.apps.ForumConfig',
     'cloudinary_storage',
+    'rest_framework',
     'cloudinary',
 ]
 
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:JCSoOLrGQWIAeKLIktrFMAoXKZgBoEso@switchback.proxy.rlwy.net:51295/railway',
+        default='postgresql://postgres:wArefbicZsiWTVOFLqgIpbAHjhuqvVbE@switchyard.proxy.rlwy.net:34897/railway',
         conn_max_age=600
     )
 }
@@ -136,9 +139,9 @@ LOGIN_REDIRECT_URL = "/"
 # CLOUDINARY_API_KEY = '484759343223795'
 # CLOUDINARY_API_SECRET = 'hb2BrS7fjv9JF1vDn70l8lWdsNs'
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dh7irimdt',
-    'API_KEY':'484759343223795',
-    'API_SECRET': 'hb2BrS7fjv9JF1vDn70l8lWdsNs'
+    'CLOUD_NAME': 'dqpfh1bjh',
+    'API_KEY':'773926973818745',
+    'API_SECRET': '_IAFvg9Auy8yUgrIGnFXKEfVBSY'
 }
 # Ganti DEFAULT_FILE_STORAGE agar Django menyimpan file media di Cloudinary
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

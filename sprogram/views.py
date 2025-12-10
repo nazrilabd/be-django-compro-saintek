@@ -9,3 +9,7 @@ class ProgramStudiListAPIView(generics.ListAPIView):
     
     # Serializer: gunakan serializer yang baru kita buat
     serializer_class = ProgramStudiSerializer
+
+class ProgramStudyDetailAPIView(generics.RetrieveAPIView):
+    queryset = ProgramStudi.objects.all()
+    serializer_class = ProgramStudiSerializer

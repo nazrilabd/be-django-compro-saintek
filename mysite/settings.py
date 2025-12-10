@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'post.apps.PostConfig',
     'sprogram.apps.SprogramConfig',
+    'headerpost.apps.HeaderpostConfig',
+    'announcement.apps.AnnouncementConfig',
     'forum.apps.ForumConfig',
     'cloudinary_storage',
+    'django_filters',
     'rest_framework',
     'cloudinary',
 ]
@@ -155,4 +158,11 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
+}
+
+# ... (Setting lainnya)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10, # <-- Jumlah item default per halaman
 }

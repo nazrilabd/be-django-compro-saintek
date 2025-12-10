@@ -1,8 +1,16 @@
 from rest_framework import generics, filters
 from django_filters.rest_framework import DjangoFilterBackend 
-from .models import Post
-from .serializers import PostSerializer
-
+from .models import Post,Tag
+from .serializers import PostSerializer,TagSerializer
+class TagListAPIView(generics.ListAPIView):
+    # Queryset: Ambil semua objek Tag
+    queryset = Tag.objects.all()
+    
+    # Serializer: Gunakan TagSerializer
+    serializer_class = TagSerializer
+    
+    # Opsional: Agar tag diurutkan berdasarkan nama
+    ordering_fields = ['name']
 # View untuk mengambil daftar semua Postingan (List View, sudah ada sebelumnya)
 class PostListAPIView(generics.ListAPIView):
     queryset = Post.objects.all()

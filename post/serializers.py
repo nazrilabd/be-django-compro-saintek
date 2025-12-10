@@ -5,7 +5,7 @@ from .models import Post, Tag
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('name',)
+        fields = ('id', 'name', 'slug')
 
 # Serializer untuk Model Post
 class PostSerializer(serializers.ModelSerializer):

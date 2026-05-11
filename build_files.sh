@@ -9,9 +9,9 @@
 # PENTING: Kumpulkan Static Files
 # --noinput agar tidak ada prompt
 # --clear untuk menghapus file lama
-echo "Collecting static files..."
-python3 manage.py collectstatic --noinput --clear
+# echo "Collecting static files..."
+# python3 manage.py collectstatic --noinput --clear
 
-# Jalankan migrasi database (jika ada perubahan model)
-echo "Running migrations..."
-python3 manage.py migrate --noinput
+# # Jalankan migrasi database (jika ada perubahan model)
+# echo "Running migrations..."
+# python3 manage.py migrate --noinput

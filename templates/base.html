@@ -3,266 +3,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-            Nazril Portfolio
+            Nazril Portfolio | Creative Tech
         {% endblock %}
     </title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
         *{
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
-        body{
-            background: #050816;
-            color: white;
+        body {
+            background: #FFFFFF; /* Diubah ke Putih */
+            color: #111827; /* Text menjadi Gelap (Gray-900) */
             overflow-x: hidden;
         }
 
-        .glass{
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+        /* Glassmorphism khusus tema Terang */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .gradient-text{
-            background: linear-gradient(to right, #60a5fa, #a855f7);
+        .gradient-text {
+            background: linear-gradient(to right, #f59e0b, #d97706); /* Amber/Kuning */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .glow{
-            box-shadow: 0 0 80px rgba(96,165,250,0.25);
+        /* Glow lembut untuk tema terang */
+        .glow {
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.15);
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fbbf24;
+            border-radius: 10px;
+        }
     </style>
-
 </head>
 
-<body>
-
-    <!-- Blur Background -->
-    <div class="fixed top-0 left-0 w-72 h-72 bg-blue-500 rounded-full blur-[120px] opacity-20 -z-10"></div>
-
-    <div class="fixed bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full blur-[120px] opacity-20 -z-10"></div>
-
+<body class="selection:bg-amber-200 selection:text-amber-900">
 
     <!-- Navbar -->
-<!-- Navbar -->
-<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/30 border-b border-white/10">
+    <nav class="fixed top-0 w-full z-[100] backdrop-blur-md bg-white/80 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="/" class="text-2xl font-black tracking-tighter text-gray-900">
+                    Nazril<span class="text-amber-500">.dev</span>
+                </a>
 
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center gap-10 text-sm font-bold tracking-wide text-gray-500">
+                    <li><a href="/" class="hover:text-amber-500 transition-colors uppercase">Home</a></li>
+                    <li><a href="/projects/" class="hover:text-amber-500 transition-colors uppercase">Projects</a></li>
+                    <li><a href="/certificates/" class="hover:text-amber-500 transition-colors uppercase">Certificates</a></li>
+                    <li><a href="/skills/" class="hover:text-amber-500 transition-colors uppercase">Skills</a></li>
+                    <li><a href="/about/" class="hover:text-amber-500 transition-colors uppercase">About</a></li>
+                </ul>
 
-        <div class="flex items-center justify-between h-20">
-
-            <!-- Logo -->
-            <a href="/"
-               class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">
-
-                Nazril.dev
-
-            </a>
-
-
-            <!-- Desktop Menu -->
-            <ul class="hidden md:flex items-center gap-8 text-gray-300">
-
-                <li>
-                    <a href="/"
-                       class="hover:text-white duration-300">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/projects/"
-                       class="hover:text-white duration-300">
-                        Projects
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/certificates/"
-                       class="hover:text-white duration-300">
-                        Certificates
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/skills/"
-                       class="hover:text-white duration-300">
-                        Skills
-                    </a>
-                </li>
-                <li>
-                    <a href="/about/"
-                       class="hover:text-white duration-300">
-                        about
-                    </a>
-                </li>
-
-            </ul>
-
-
-            <!-- Mobile Button -->
-            <button id="menu-btn"
-                    class="md:hidden text-white">
-
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-8 h-8"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 6h16M4 12h16M4 18h16" />
-
-                </svg>
-
-            </button>
-
+                <!-- Mobile Button -->
+                <button id="menu-btn" class="md:hidden text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-    </div>
-
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu"
-         class="hidden md:hidden border-t border-white/10 bg-black/80 backdrop-blur-xl">
-
-        <div class="flex flex-col px-6 py-6 gap-5 text-gray-300">
-
-            <a href="/"
-               class="hover:text-white duration-300">
-                Home
-            </a>
-
-            <a href="/projects/"
-               class="hover:text-white duration-300">
-                Projects
-            </a>
-
-            <a href="/certificates/"
-               class="hover:text-white duration-300">
-                Certificates
-            </a>
-
-            <a href="/skills/"
-               class="hover:text-white duration-300">
-                Skills
-            </a>
-
-            <a href="/about/"
-               class="hover:text-white duration-300">
-                about
-            </a>
-
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+            <div class="flex flex-col px-6 py-8 gap-6 text-base font-bold text-gray-600">
+                <a href="/" class="hover:text-amber-500 transition-colors">Home</a>
+                <a href="/projects/" class="hover:text-amber-500 transition-colors">Projects</a>
+                <a href="/certificates/" class="hover:text-amber-500 transition-colors">Certificates</a>
+                <a href="/skills/" class="hover:text-amber-500 transition-colors">Skills</a>
+                <a href="/about/" class="hover:text-amber-500 transition-colors">About</a>
+            </div>
         </div>
+    </nav>
 
-    </div>
-
-</nav>
-
-
-<!-- Script -->
-<script>
-
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-
-        mobileMenu.classList.toggle('hidden');
-
-    });
-
-</script>
-
-
-    <!-- Content -->
-    <main>
-
+    <!-- Main Content -->
+    <main class="min-h-screen pt-20">
         {% block content %}
         {% endblock %}
-
     </main>
 
-
     <!-- Footer -->
-    <footer class="border-t border-gray-800 py-10 mt-20">
-
+    <footer class="bg-[#FAFAFA] border-t border-gray-100 py-16 mt-20">
         <div class="max-w-7xl mx-auto px-8">
-
-            <div class="grid md:grid-cols-2 gap-10">
-
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-
-                    <h1 class="text-3xl font-bold gradient-text mb-4">
-                        Nazril Abdillah
+                    <h1 class="text-3xl font-black text-gray-900 mb-6">
+                        Nazril <span class="text-amber-500">Abdillah</span>
                     </h1>
-
-                    <p class="text-gray-400 leading-relaxed">
-
-                        Mahasiswa Teknik Informatika yang memiliki
-                        passion pada software development,
-                        artificial intelligence, business development,
-                        dan teknologi digital modern.
-
+                    <p class="text-gray-500 leading-loose max-w-md">
+                        Mahasiswa Teknik Informatika yang berfokus pada estetika digital dan fungsionalitas teknologi modern. Berkomitmen untuk menciptakan solusi visual yang berdampak.
                     </p>
-
                 </div>
 
-
-                <div class="md:text-right">
-
-                    <h2 class="text-xl font-semibold mb-4">
-                        Contact
-                    </h2>
-
-                    <p class="text-gray-400">
-                        nazrilabdillah106@gmail.com
-                    </p>
-
-                    <p class="text-gray-400">
-                        089660252010
-                    </p>
-
-                    <p class="text-gray-400">
-                        Lampung Selatan
-                    </p>
-
+                <div class="md:text-right space-y-2">
+                    <h2 class="text-sm font-black text-amber-500 uppercase tracking-[3px] mb-4">Contact Detail</h2>
+                    <p class="text-gray-900 font-medium">nazrilabdillah106@gmail.com</p>
+                    <p class="text-gray-900 font-medium">0896 6025 2010</p>
+                    <p class="text-gray-500 text-sm italic">Lampung Selatan, Indonesia</p>
                 </div>
-
             </div>
 
-            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
-
-                © 2026 Nazril Abdillah — Portfolio Website
-
+            <div class="border-t border-gray-200/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-widest">
+                    © 2026 NAZRIL ABDILLAH — ARCHIVE
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors text-xs font-bold uppercase">Instagram</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors text-xs font-bold uppercase">LinkedIn</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors text-xs font-bold uppercase">GitHub</a>
+                </div>
             </div>
-
         </div>
-
     </footer>
 
+    <!-- Script Menu -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on scroll
+        window.onscroll = () => {
+            mobileMenu.classList.add('hidden');
+        };
+    </script>
 </body>
 </html>

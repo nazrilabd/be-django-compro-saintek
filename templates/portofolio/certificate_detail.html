@@ -1,259 +1,131 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ certificate.title }} | Nazril Portfolio
+    {{ certificate.title }} | Nazril Abdillah
 {% endblock %}
 
 {% block content %}
 
-<!-- HERO -->
-<section class="pt-40 pb-20 relative overflow-hidden min-h-screen">
+<!-- HERO DETAIL -->
+<section class="pt-40 pb-20 relative overflow-hidden bg-[#FAFAFA]">
+    <!-- Abstract Background -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-100/50 blur-[120px] rounded-full -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50/80 blur-[100px] rounded-full -ml-20 -mb-20"></div>
 
-    <!-- Blur -->
-    <div class="absolute top-0 left-0 w-72 h-72 bg-cyan-500 rounded-full blur-[120px] opacity-20"></div>
-
-    <div class="absolute bottom-0 right-0 w-72 h-72 bg-fuchsia-500 rounded-full blur-[120px] opacity-20"></div>
-
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
-
-        <!-- BACK -->
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Back Button -->
         <a href="{% url 'certificates' %}"
-           class="inline-flex items-center gap-3 text-gray-400 hover:text-white duration-300 mb-12">
-
-            ← Back to Certificates
-
+           class="inline-flex items-center gap-2 text-gray-500 hover:text-amber-600 font-bold text-xs uppercase tracking-widest duration-300 mb-12 group">
+           <span class="group-hover:-translate-x-2 transition-transform duration-300">←</span> Back to Certificates
         </a>
 
-
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-            <!-- LEFT -->
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <!-- LEFT CONTENT -->
             <div>
-
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 mb-8">
-
-                    <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
-
-                    <p class="text-cyan-300 text-sm uppercase tracking-[4px]">
+                <!-- Issuer Badge -->
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-amber-100 bg-amber-50 mb-8">
+                    <div class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
+                    <p class="text-amber-700 text-[10px] font-black uppercase tracking-widest">
                         {{ certificate.issuer }}
                     </p>
-
                 </div>
 
-
-                <!-- TITLE -->
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-8">
-
-                    {{ certificate.title }}
-
+                <!-- Title -->
+                <h1 class="text-5xl lg:text-7xl font-black leading-[0.9] mb-8 text-gray-900 tracking-tight">
+                    {{ certificate.title|upper }}
                 </h1>
 
-
-                <!-- DESCRIPTION -->
-                <p class="text-gray-400 text-base sm:text-lg leading-loose mb-10">
-
-                    Sertifikat ini merupakan bagian dari
-                    perjalanan pengembangan skill,
-                    pengalaman,
-                    dan pembelajaran dalam bidang teknologi,
-                    desain,
-                    media digital,
-                    dan kreativitas modern.
-
+                <!-- Description -->
+                <p class="text-gray-600 text-lg leading-relaxed mb-10">
+                    Sertifikat ini merupakan validasi atas kompetensi dan dedikasi dalam mempelajari teknologi terbaru, serta bukti nyata dari perjalanan pengembangan diri di bidang digital.
                 </p>
 
-
-                <!-- BUTTONS -->
+                <!-- Action Buttons -->
                 <div class="flex flex-wrap gap-5">
-
                     {% if certificate.credential_link %}
                     <a href="{{ certificate.credential_link }}"
                        target="_blank"
-                       class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl
-                       bg-gradient-to-r from-cyan-500 to-fuchsia-500
-                       font-semibold hover:scale-105 duration-300
-                       shadow-2xl shadow-cyan-500/20">
-
-                        View Credential
-
+                       class="px-8 py-4 rounded-2xl bg-gray-900 text-white text-xs font-black uppercase tracking-widest hover:bg-amber-500 duration-300 shadow-xl shadow-gray-200">
+                       <i class="fas fa-certificate mr-2 text-amber-400"></i> View Credential
                     </a>
                     {% endif %}
-
 
                     {% if certificate.pdf %}
                     <a href="{{ certificate.pdf.url }}"
                        download
-                       class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl
-                       border border-white/10 hover:bg-white/5
-                       duration-300">
-
-                        Download Certificate
-
+                       class="px-8 py-4 rounded-2xl border-2 border-gray-100 bg-white text-gray-900 text-xs font-black uppercase tracking-widest hover:border-amber-200 hover:bg-amber-50 duration-300">
+                       <i class="fas fa-download mr-2"></i> Download PDF
                     </a>
                     {% endif %}
-
                 </div>
 
-
-                <!-- INFO -->
+                <!-- Meta Info Grid -->
                 <div class="grid sm:grid-cols-2 gap-6 mt-14">
-
-                    <!-- ISSUER -->
-                    <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
-
-                        <p class="text-cyan-400 mb-3">
-                            Issuer
-                        </p>
-
-                        <h1 class="text-2xl font-bold mb-2">
-                            Organization
-                        </h1>
-
-                        <p class="text-gray-400 leading-loose">
-
-                            {{ certificate.issuer }}
-
-                        </p>
-
+                    <div class="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
+                        <p class="text-amber-600 font-black text-[10px] uppercase tracking-widest mb-3">Organization</p>
+                        <h3 class="text-xl font-black text-gray-900 mb-2">Issuer</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">{{ certificate.issuer }}</p>
                     </div>
 
-
-                    <!-- DATE -->
-                    <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
-
-                        <p class="text-fuchsia-400 mb-3">
-                            Published
-                        </p>
-
-                        <h1 class="text-2xl font-bold mb-2">
-                            Issue Date
-                        </h1>
-
-                        <p class="text-gray-400 leading-loose">
-
-                            {{ certificate.issue_date }}
-
-                        </p>
-
+                    <div class="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
+                        <p class="text-amber-600 font-black text-[10px] uppercase tracking-widest mb-3">Recognition</p>
+                        <h3 class="text-xl font-black text-gray-900 mb-2">Issue Date</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">{{ certificate.issue_date|date:"F d, Y" }}</p>
                     </div>
-
                 </div>
-
             </div>
 
-
-
-            <!-- RIGHT -->
-            <div class="relative flex justify-center">
-
-                <!-- Glow -->
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-fuchsia-500/20 blur-[100px] rounded-full"></div>
-
-
-                <!-- Certificate Image -->
-                <div class="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-2xl">
-
+            <!-- RIGHT IMAGE (Certificate Preview) -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-amber-200/20 blur-[80px] rounded-full group-hover:bg-amber-300/30 transition-colors duration-500"></div>
+                <div class="relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-white p-4 shadow-2xl">
                     <img src="{{ certificate.image.url }}"
-                         class="w-full max-w-[700px] rounded-[30px] object-cover hover:scale-[1.02] duration-500">
-
+                         alt="{{ certificate.title }}"
+                         class="w-full rounded-[1.5rem] object-cover shadow-inner transition-transform duration-700 group-hover:scale-[1.02]">
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
-<!-- EXTRA SECTION -->
-<section class="pb-32">
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-
-        <div class="grid md:grid-cols-3 gap-8">
-
-
-            <!-- CARD -->
-            <div class="rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-xl p-8">
-
-                <p class="text-cyan-400 uppercase tracking-[4px] mb-4">
-                    Achievement
+<!-- EXTRA DETAIL SECTION -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- CARD 1 -->
+            <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-amber-200/20 transition-all duration-500">
+                <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 mb-6 mx-auto md:mx-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-2xl font-black text-gray-900 mb-4">Skill Growth</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Bukti nyata dari peningkatan kemampuan teknis dan adaptasi terhadap tren teknologi industri terbaru.
                 </p>
-
-                <h1 class="text-3xl font-bold mb-5">
-                    Skill Growth
-                </h1>
-
-                <p class="text-gray-400 leading-loose">
-
-                    Sertifikat ini menunjukkan proses
-                    pengembangan kemampuan,
-                    kreativitas,
-                    dan pengalaman profesional
-                    dalam dunia digital modern.
-
-                </p>
-
             </div>
 
-
-
-            <!-- CARD -->
-            <div class="rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-xl p-8">
-
-                <p class="text-fuchsia-400 uppercase tracking-[4px] mb-4">
-                    Experience
+            <!-- CARD 2 -->
+            <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-amber-200/20 transition-all duration-500">
+                <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 mb-6 mx-auto md:mx-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="text-2xl font-black text-gray-900 mb-4">Process</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Hasil dari dedikasi belajar, penyelesaian proyek praktis, dan pemahaman mendalam tentang konsep digital.
                 </p>
-
-                <h1 class="text-3xl font-bold mb-5">
-                    Learning Process
-                </h1>
-
-                <p class="text-gray-400 leading-loose">
-
-                    Pengalaman belajar dan praktik
-                    menjadi bagian penting
-                    dalam meningkatkan skill,
-                    problem solving,
-                    dan eksplorasi teknologi kreatif.
-
-                </p>
-
             </div>
 
-
-
-            <!-- CARD -->
-            <div class="rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-xl p-8">
-
-                <p class="text-purple-400 uppercase tracking-[4px] mb-4">
-                    Development
+            <!-- CARD 3 -->
+            <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-amber-200/20 transition-all duration-500">
+                <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 mb-6 mx-auto md:mx-0 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-map-signs"></i>
+                </div>
+                <h3 class="text-2xl font-black text-gray-900 mb-4">Journey</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Setiap sertifikat menandai langkah penting dalam perjalanan profesional menuju keahlian yang lebih tinggi.
                 </p>
-
-                <h1 class="text-3xl font-bold mb-5">
-                    Professional Journey
-                </h1>
-
-                <p class="text-gray-400 leading-loose">
-
-                    Setiap sertifikat menjadi bagian dari
-                    perjalanan menuju pengembangan diri,
-                    karir profesional,
-                    dan eksplorasi dunia digital modern.
-
-                </p>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 {% endblock %}
